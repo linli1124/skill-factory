@@ -13,9 +13,12 @@ skill-factory/
 ├── SKILL.md            # 路由＋五条死线＋任务定位三问（必定加载）
 ├── 开工卡.md           # L0：任务开始三问/收尾经验分流/新 skill 自检
 ├── references/
-│   └── 结构规范.md      # 什么时候值得沉淀/标准结构/分层铁律/触发词设计
+│   ├── 结构规范.md      # 什么时候值得沉淀/标准结构/分层铁律/触发词设计
+│   └── 错题集.md        # 建 skill / 写校验脚本踩过的坑（现象→根因→对策）
+├── scripts/
+│   └── selfcheck.py    # 门禁自检：21 项 / 三档判定 / 退出码 0·2·3·4·8
 ├── eval/
-│   └── preflight-skill.py  # 新 skill 结构自检（frontmatter/行数/README/eval）
+│   └── preflight-skill.py  # 旧入口，转发到 scripts/selfcheck.py
 └── README.md           # 本文件
 ```
 
@@ -30,11 +33,16 @@ skill-factory/
 
 - `skill-creator`（官方）：管"怎么写 skill 的技术格式"（YAML/打包/验证）
 - **本 skill**：管"任务怎么沉淀/怎么组织"（何时建/结构分层/经验分流/触发设计）——**内容层 vs 格式层**
-- 实例参考：`~/.workbuddy/skills/zhixia-character/`（全结构实战版）
+- 实例参考：本目录自身（四层齐备：SKILL.md / 开工卡 / references / scripts）
 
 ## 用法
 
 ```bash
-# 任务收尾时自检新 skill
-python3 eval/preflight-skill.py ~/.workbuddy/skills/<新skill名>
+# 任务收尾时自检（不传参数＝检查本包）
+python3 scripts/selfcheck.py ~/.workbuddy/skills/<新skill名>
+
+# 机器可读
+python3 scripts/selfcheck.py <目录> --json
 ```
+
+退出码：`0` 过 ｜ `2` 用法错 ｜ `3` 有 FAIL 不许交付 ｜ `4` 环境问题 ｜ `8` 只有 WARN。

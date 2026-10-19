@@ -25,10 +25,10 @@ compatibility: Requires Python 3.9+; user-level skill (~/.workbuddy/skills/)
 | 新任务启动/结构疑问 | `开工卡.md`（L0，读这一页） |
 | skill 标准结构长什么样 | `references/结构规范.md` |
 | 完整实例参考 | 本目录自身（四层齐备：SKILL.md / 开工卡 / references / eval） |
-| 新 skill 建完自检 | `eval/preflight-skill.py` |
+| 新 skill 建完自检 | `scripts/selfcheck.py`（门禁；退出码 0/2/3/4/8） |
 
 ## 任务定位三问（SKILL.md 内联兜底）
 
 1. **还干吗**：一次性任务→直接干；重复任务→建/更新 skill
-2. **前科**：同类坑查 `错题集.md`/历史 memory——**不重复踩**
+2. **前科**：同类坑查 `references/错题集.md`/历史 memory——**不重复踩**
 3. **落点**：产出物位置＋验收标准，动手前定
